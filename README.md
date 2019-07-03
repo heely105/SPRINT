@@ -1,18 +1,11 @@
 # SPRINT
 
-testkjlkasjfkldvlnasd
-123123123123123
+## 가이드
 
-## 채호
+1. 시작하기
 
+    `catkin_ws`의 `src` 안으로 이동하여 아래 명령어로 `git clone`을 수행
 
-hi my name is chaeho, nice to meet you
-
-
-## 현목
-
-떳다떳다 비행기
-
-## 희영
-
-ㅎㅎㅎㅎㅎㅎㅎㅎ
+    ```zsh
+    git clone https://github.com/heely105/SPRINT.git
+    ```
