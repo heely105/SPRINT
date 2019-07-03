@@ -18,6 +18,8 @@
 
     `git commit -am "message"`
 
+    *브랜치 넘어갈때는 commit하고 해야 함(회색 상태)
+
     `git push`
 
 3. checkout / merge
