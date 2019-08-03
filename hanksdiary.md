@@ -33,6 +33,6 @@
 4. fetch -p
 
     remote 에서 지운 것을 origin에서도 지움.
-    
 
-오오옹오오오오오오옹오
+    *안 쓰는 branch 정리함.
+    
