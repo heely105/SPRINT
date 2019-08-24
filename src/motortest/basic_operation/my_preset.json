@@ -1,0 +1,12 @@
+{
+    "ports":[ "/dev/ttyUSB0" ],
+    "baud rates": "auto",
+    "protocol versions": [ 2.0 ],
+    "motors":[
+        {
+            "id": 1,
+            "alias": "joint_0",
+            "model": "XL430-W250"
+        }
+    ]
+}
