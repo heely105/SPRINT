@@ -18,7 +18,7 @@
 
 #include "turtlebot3_omni_motor_driver.h"
 
-Turtlebot3MotorDriver::Turtlebot3MotorDriver()
+Turtlebot3OmniMotorDriver::Turtlebot3OmniMotorDriver()
 : baudrate_(BAUDRATE),
   protocol_version_(PROTOCOL_VERSION),
   first_wheel_id_(DXL_FIRST_ID),
@@ -27,12 +27,12 @@ Turtlebot3MotorDriver::Turtlebot3MotorDriver()
 {
 }
 
-Turtlebot3MotorDriver::~Turtlebot3MotorDriver()
+Turtlebot3OmniMotorDriver::~Turtlebot3OmniMotorDriver()
 {
   closeDynamixel();
 }
 
-bool Turtlebot3MotorDriver::init(void)
+bool Turtlebot3OmniMotorDriver::init(void)
 {
   portHandler_   = dynamixel::PortHandler::getPortHandler(DEVICENAME);
   packetHandler_ = dynamixel::PacketHandler::getPacketHandler(PROTOCOL_VERSION);
@@ -72,7 +72,7 @@ bool Turtlebot3MotorDriver::init(void)
   return true;
 }
 
-bool Turtlebot3MotorDriver::setTorque(uint8_t id, bool onoff)
+bool Turtlebot3OmniMotorDriver::setTorque(uint8_t id, bool onoff)
 {
   uint8_t dxl_error = 0;
   int dxl_comm_result = COMM_TX_FAIL;
@@ -90,12 +90,12 @@ bool Turtlebot3MotorDriver::setTorque(uint8_t id, bool onoff)
   }
 }
 
-bool Turtlebot3MotorDriver::getTorque()
+bool Turtlebot3OmniMotorDriver::getTorque()
 {
   return torque_;
 }
 
-bool Turtlebot3MotorDriver::readEncoder(int32_t &front_value, int32_t &left_value, int32_t &right_value)
+bool Turtlebot3OmniMotorDriver::readEncoder(int32_t &front_value, int32_t &left_value, int32_t &right_value)
 {
   int dxl_comm_result = COMM_TX_FAIL;              // Communication result
   bool dxl_addparam_result = false;                // addParam result
@@ -142,7 +142,7 @@ bool Turtlebot3MotorDriver::readEncoder(int32_t &front_value, int32_t &left_valu
 }
   
 
-void Turtlebot3MotorDriver::closeDynamixel(void)
+void Turtlebot3OmniMotorDriver::closeDynamixel(void)
 {
   // Disable Dynamixel Torque
   setTorque(first_wheel_id_, false);
@@ -153,7 +153,7 @@ void Turtlebot3MotorDriver::closeDynamixel(void)
   portHandler_->closePort();
 }
 
-bool Turtlebot3MotorDriver::controlMotor(int64_t first_wheel_value, int64_t second_wheel_value, int64_t third_wheel_value)
+bool Turtlebot3OmniMotorDriver::controlMotor(int64_t first_wheel_value, int64_t second_wheel_value, int64_t third_wheel_value)
 {
   bool dxl_addparam_result_;
   int8_t dxl_comm_result_;

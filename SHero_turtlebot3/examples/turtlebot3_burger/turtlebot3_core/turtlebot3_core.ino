@@ -46,7 +46,8 @@ void setup()
   tf_broadcaster.init(nh);
 
   // Setting for Dynamixel motors
-  motor_driver.init(NAME);
+  // motor_driver.init(NAME);
+  motor_driver.init();
 
   // Setting for IMU
   sensors.init();
@@ -199,7 +200,10 @@ void motorPowerCallback(const std_msgs::Bool& power_msg)
 {
   bool dxl_power = power_msg.data;
 
-  motor_driver.setTorque(dxl_power);
+  //motor_driver.setTorque(dxl_power);
+  motor_driver.setTorque(DXL_FIRST_ID, dxl_power);
+  motor_driver.setTorque(DXL_SECOND_ID, dxl_power);
+  motor_driver.setTorque(DXL_THIRD_ID, dxl_power);
 }
 
 /*******************************************************************************
@@ -615,57 +619,57 @@ bool calcOdometry(double diff_time)
 *******************************************************************************/
 void driveTest(uint8_t buttons)
 {
-  static bool move[3] = {false, false, false};
-  static int32_t saved_tick[3] = {0, 0, 0};
-  static double diff_encoder = 0.0;
+  // static bool move[3] = {false, false, false};
+  // static int32_t saved_tick[3] = {0, 0, 0};
+  // static double diff_encoder = 0.0;
 
-  int32_t current_tick[3] = {0, 0, 0};
+  // int32_t current_tick[3] = {0, 0, 0};
 
-  motor_driver.readEncoder(current_tick[LEFT], current_tick[RIGHT]);
+  // motor_driver.readEncoder(current_tick[FRONT], current_tick[LEFT], current_tick[RIGHT]);
 
-  if (buttons & (1<<0))  
-  {
-    move[LINEAR_X] = true;
-    saved_tick[RIGHT] = current_tick[RIGHT];
+  // if (buttons & (1<<0))  
+  // {
+  //   move[LINEAR_X] = true;
+  //   saved_tick[RIGHT] = current_tick[RIGHT];
 
-    diff_encoder = TEST_DISTANCE / (0.207 / 4096); // (Circumference of Wheel) / (The number of tick per revolution)
-    tTime[6] = millis();
-  }
-  else if (buttons & (1<<1))
-  {
-    move[ANGULAR] = true;
-    saved_tick[RIGHT] = current_tick[RIGHT];
+  //   diff_encoder = TEST_DISTANCE / (0.207 / 4096); // (Circumference of Wheel) / (The number of tick per revolution)
+  //   tTime[6] = millis();
+  // }
+  // else if (buttons & (1<<1))
+  // {
+  //   move[ANGULAR] = true;
+  //   saved_tick[RIGHT] = current_tick[RIGHT];
 
-    diff_encoder = (TEST_RADIAN * TURNING_RADIUS) / (0.207 / 4096);
-    tTime[6] = millis();
-  }
+  //   diff_encoder = (TEST_RADIAN * TURNING_RADIUS) / (0.207 / 4096);
+  //   tTime[6] = millis();
+  // }
 
-  if (move[LINEAR_X])
-  {    
-    if (abs(saved_tick[RIGHT] - current_tick[RIGHT]) <= diff_encoder)
-    {
-      goal_velocity_from_button[LINEAR_X]  = 0.05;
-      tTime[6] = millis();
-    }
-    else
-    {
-      goal_velocity_from_button[LINEAR_X]  = 0.0;
-      move[LINEAR_X] = false;
-    }
-  }
-  else if (move[ANGULAR])
-  {   
-    if (abs(saved_tick[RIGHT] - current_tick[RIGHT]) <= diff_encoder)
-    {
-      goal_velocity_from_button[ANGULAR]= -0.7;
-      tTime[6] = millis();
-    }
-    else
-    {
-      goal_velocity_from_button[ANGULAR]  = 0.0;
-      move[ANGULAR] = false;
-    }
-  }
+  // if (move[LINEAR_X])
+  // {    
+  //   if (abs(saved_tick[RIGHT] - current_tick[RIGHT]) <= diff_encoder)
+  //   {
+  //     goal_velocity_from_button[LINEAR_X]  = 0.05;
+  //     tTime[6] = millis();
+  //   }
+  //   else
+  //   {
+  //     goal_velocity_from_button[LINEAR_X]  = 0.0;
+  //     move[LINEAR_X] = false;
+  //   }
+  // }
+  // else if (move[ANGULAR])
+  // {   
+  //   if (abs(saved_tick[RIGHT] - current_tick[RIGHT]) <= diff_encoder)
+  //   {
+  //     goal_velocity_from_button[ANGULAR]= -0.7;
+  //     tTime[6] = millis();
+  //   }
+  //   else
+  //   {
+  //     goal_velocity_from_button[ANGULAR]  = 0.0;
+  //     move[ANGULAR] = false;
+  //   }
+  // }
 }
 
 /*******************************************************************************

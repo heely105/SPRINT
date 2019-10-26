@@ -24,6 +24,8 @@
 
 #define DEBUG
 
+#define NAME                             "Burger"
+
 #define WHEEL_RADIUS                    0.03      // meter
 #define WHEEL_SEPARATION_ANGLE          60        // degree
 #define DISTANCE_CENTER_TO_WHEEL        0.122     // meter
@@ -37,6 +39,10 @@
 
 #define MAX_LINEAR_VELOCITY             0.22   // m/s
 #define MAX_ANGULAR_VELOCITY            2.84   // rad/s
+
+#define MIN_LINEAR_VELOCITY             -MAX_LINEAR_VELOCITY  
+#define MIN_ANGULAR_VELOCITY            -MAX_ANGULAR_VELOCITY 
+
 #define VELOCITY_LINEAR_X               0.01   // m/s
 #define VELOCITY_LINEAR_Y               0.01   // m/s
 #define VELOCITY_ANGULAR_Z              0.1    // rad/s

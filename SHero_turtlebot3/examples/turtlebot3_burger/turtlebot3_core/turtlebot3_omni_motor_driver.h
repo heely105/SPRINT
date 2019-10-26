@@ -53,11 +53,11 @@
 #define TORQUE_ENABLE                   1       // Value for enabling the torque
 #define TORQUE_DISABLE                  0       // Value for disabling the torque
 
-class Turtlebot3MotorDriver
+class Turtlebot3OmniMotorDriver
 {
  public:
-  Turtlebot3MotorDriver();
-  ~Turtlebot3MotorDriver();
+  Turtlebot3OmniMotorDriver();
+  ~Turtlebot3OmniMotorDriver();
   bool init(void);
   void closeDynamixel(void);
 

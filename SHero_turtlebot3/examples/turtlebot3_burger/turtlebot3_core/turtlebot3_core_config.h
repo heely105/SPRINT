@@ -199,7 +199,7 @@ static uint32_t tTime[10];
 /*******************************************************************************
 * Declaration for motor
 *******************************************************************************/
-Turtlebot3MotorDriver motor_driver;
+Turtlebot3OmniMotorDriver motor_driver;
 
 /*******************************************************************************
 * Calculation for odometry
