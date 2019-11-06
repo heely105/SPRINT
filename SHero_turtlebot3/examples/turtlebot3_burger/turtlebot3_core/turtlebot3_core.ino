@@ -588,8 +588,8 @@ bool calcOdometry(double diff_time)
    */
   float sinx = sin(theta);
   float cosx = cos(theta);
-  dx = 0.01*(2.0*p*sinx + q*(1.73205*cosx - sinx) - r*(1.73205*cosx + sinx));
-  dy = 0.03*(-0.66667*p*cosx + ((q*(1.73205*sinx + cosx) + r*(cosx - 1.73205*sinx)/3)));
+  dx = 0.02*sinx*p + (0.1732*cosx-0.01*sinx)*q - (0.01732*cosx+0.01*sinx)*r ;
+  dy = -0.02*cosx*p + (0.01732*sinx+0.01*cosx)*q + (-0.01732*sinx+0.01*cosx)*r ;
   dtheta = (-0.0819672)*(p + q + r);
   odom_pose[0] = odom_pose[0] + dx; //delta_s * cos(odom_pose[2] + (delta_theta / 2.0));
   odom_pose[1] = odom_pose[1] + dy; //delta_s * sin(odom_pose[2] + (delta_theta / 2.0));
